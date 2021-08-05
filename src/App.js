@@ -1,13 +1,7 @@
 import "./App.css";
 import React from "react";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Login from "./Components/Login";
 import Nav from "./Components/Nav";

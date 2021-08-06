@@ -1,4 +1,6 @@
 import React,{ useState }  from "react";
+import { Link }  from "react-router-dom";
+
 // {//this is where we will create the login
 // // fetch(
 // //     "https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-PT/users/register",
@@ -21,6 +23,10 @@ import React,{ useState }  from "react";
 // //     })
 // //     .catch(console.error);
 // }
+
+const loginUrl = "https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-PT"
+
+
 const exampleLogin = {
   userName: "SpongeBob",
   password: "KrabbyPatty"
@@ -34,7 +40,19 @@ const Login = () => {
 
   const onFormSubmit = (event)=>{
     event.preventDefault();
-  }
+    const userLogin={
+      userName,
+      password,
+    };
+
+
+  const loginVerification = loginUrl + "/users/login";
+  fetch(loginVerification, {
+    method: "POST",
+    body: JSON.stringify(userLogin),
+  }).then((res) => console.log ("You're now logged in!", res))
+  };
+
 
   const updateUsername = (event) => setUserName(event.target.value);
   const updatePassword = (event) => setPassword(event.target.value);
@@ -53,11 +71,18 @@ const Login = () => {
         </label>
         <button type="submit">Submit Form</button>
       </form>
-    </div>
+
+      <Link to="/register">Register</Link>
+    
+</div>
+
   )
 
+};
 
-}
+
+
+
 
 export default Login
 // User should be able to register

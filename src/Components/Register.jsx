@@ -6,6 +6,7 @@ const loginUrl =
 const Register = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  // const [posts, setPosts] = useState([]);
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -16,6 +17,7 @@ const Register = () => {
       },
     };
     const loginVerification = loginUrl + "/users/register";
+
     fetch(loginVerification, {
       method: "POST",
       headers: {
@@ -27,7 +29,11 @@ const Register = () => {
         console.log("We are in?", res);
         return res.json();
       })
-      .then(console.log);
+      // This last step changes depending on the request you're making
+      // i.e. this'll be where you setState if youre loading data or where you
+      //      call localhost if you are logging in or out
+      .then((res) => console.log(res));
+    // .then(res => setPosts(res.body));
   };
 
   const updateUsername = (event) => setUserName(event.target.value);

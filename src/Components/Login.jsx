@@ -29,10 +29,10 @@ import { Link }  from "react-router-dom";
 
 const loginUrl = "https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-PT";
 
-const exampleLogin = {
-  username: "SpongeBob",
-  password: "KrabbyPatty"
-};
+// const exampleLogin = {
+//   username: "SpongeBob",
+//   password: "KrabbyPatty",
+// };
 
 
 const Login = () => {
@@ -45,8 +45,7 @@ const Login = () => {
   const userLogin={
     username: username,
     password: password,
-  }
- ;
+  };
 
   const loginVerification = loginUrl + "/users/login";
   fetch(loginVerification, {
@@ -54,7 +53,7 @@ const Login = () => {
     headers:{
       'Content-Type' : 'application/json'
     },
-    body: JSON.stringify({user:{userLogin}}),
+    body: JSON.stringify({user:userLogin}),
   }).then(response => response.json())
   .then(result => {
     console.log(result);

@@ -4,22 +4,29 @@ import React,{ useState }  from "react";
 const loginUrl = "https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-PT"
 
 const Register = () => {
-    const [userName, setUserName] = useState("");
+    const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
   
     const onFormSubmit = (event)=>{
       event.preventDefault();
       const userLogin={
-        userName,
+        username,
         password,
-      }
-     ;
+      };
 
-     const loginVerification = loginUrl + "/users/register";
-  fetch(loginVerification, {
-    method: "POST",
-    body: JSON.stringify(userLogin),
-  }).then((res) => console.log ("We are in?", res))
+    const loginVerification = loginUrl + "/users/register";
+    fetch(loginVerification, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user: userLogin }),
+    })
+      .then((res) => {
+        console.log("We are in?", res);
+        return res.json();
+      })
+      .then(console.log);
   };
   
     const updateUsername = (event) => setUserName(event.target.value);
@@ -31,7 +38,7 @@ const Register = () => {
           <form onSubmit={onFormSubmit}>
             <label>
               New Username:
-              <input type="text" value={userName} onChange={updateUsername} />
+              <input type="text" value={username} onChange={updateUsername} />
             </label>
             <label>
               New Password:
@@ -40,7 +47,7 @@ const Register = () => {
             <button type="submit">Submit Form</button>
           </form>        
     </div>    
-      )
+      );
 };
   
     

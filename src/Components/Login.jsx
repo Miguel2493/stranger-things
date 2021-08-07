@@ -30,21 +30,21 @@ import { Link }  from "react-router-dom";
 const loginUrl = "https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-PT";
 
 const exampleLogin = {
-  userName: "SpongeBob",
+  username: "SpongeBob",
   password: "KrabbyPatty"
 };
 
 
 const Login = () => {
 
-  const [userName, setUserName] = useState("");
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   const onFormSubmit = (event)=>{
     event.preventDefault();
   const userLogin={
-    userName,
-    password,
+    username: username,
+    password: password,
   }
  ;
 
@@ -54,7 +54,7 @@ const Login = () => {
     headers:{
       'Content-Type' : 'application/json'
     },
-    body: JSON.stringify(userLogin),
+    body: JSON.stringify({user:{userLogin}}),
   }).then(response => response.json())
   .then(result => {
     console.log(result);
@@ -71,7 +71,7 @@ const Login = () => {
       <form onSubmit={onFormSubmit}>
         <label>
           Username:
-          <input type="text" value={userName} onChange={updateUsername} />
+          <input type="text" value={username} onChange={updateUsername} />
         </label>
         <label>
         Password:

@@ -8,6 +8,7 @@ import Nav from "./Components/Nav";
 import Messages from "./Components/Messages";
 import Posts from "./Components/Posts";
 import Profile from "./Components/Profile";
+import Register from "./Components/Register";
 
 function App() {
   console.log("App");
@@ -20,6 +21,7 @@ function App() {
           <Route path="/messages" component={Messages} />
           <Route path="/posts" component={Posts} />
           <Route path="/profile" component={Profile} />
+          <Route path="/register" component={Register} />
         </Switch>
       </Router>
     </div>

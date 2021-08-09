@@ -61,7 +61,8 @@ const Login = () => {
     return response.json();
   }).then((result) => {
     console.log(result.data.token);
-    window.localStorage.setItem('token',result.data.token)
+   window.localStorage.setItem('token',result.data.token)
+   history.push("/profile")
   })
   .catch(console.error)
   };
@@ -69,12 +70,12 @@ const Login = () => {
   const updateUsername = (event) => setUserName(event.target.value);
   const updatePassword = (event) => setPassword(event.target.value);
 
-  const redirect = ()=>{
-    const authToken = localStorage.getItem('token')
+  // const LogIn = ()=>{
+  //   const authToken = localStorage.getItem('token')
  
-      if(authToken.length > 0){
-        history.push("/profile")}
-  }; 
+  //     if(authToken){
+  //       }
+  // }; 
   
 
   return (
@@ -89,7 +90,7 @@ const Login = () => {
         Password:
           <input type="text" value={password} onChange={updatePassword} />
         </label>
-        <button onClick={redirect} type="submit">Enter</button>
+        <button type="submit">Enter</button>
       </form>
 
       <Link to="/register">Register</Link>

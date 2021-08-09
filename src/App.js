@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import Nav from "./Components/Nav";
 import Messages from "./Components/Messages";
-import Posts from "./Components/Posts";
+import CreatePosts from "./Components/CreatePosts";
 import Profile from "./Components/Profile";
 import Register from "./Components/Register";
 
@@ -19,7 +19,7 @@ function App() {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/messages" component={Messages} />
-          <Route path="/posts" component={Posts} />
+          <Route path="/createposts" component={CreatePosts} />
           <Route path="/profile" component={Profile} />
           <Route path="/register" component={Register} />
         </Switch>

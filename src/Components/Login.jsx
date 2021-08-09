@@ -42,10 +42,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  const redirect = ()=>{
-    history.push("/src/Components/Home.jsx")
-  };
-  
 
   const onFormSubmit = (event)=>{
     event.preventDefault();
@@ -53,13 +49,6 @@ const Login = () => {
     username: username,
     password: password,
   };
-
-  function LoginCompleted(){
-    let history = useHistory();
-    function handleClick(){
-      history.push("/Home")
-    }
-  }
 
   const loginVerification = loginUrl + "/users/login";
   fetch(loginVerification, {
@@ -79,6 +68,14 @@ const Login = () => {
 
   const updateUsername = (event) => setUserName(event.target.value);
   const updatePassword = (event) => setPassword(event.target.value);
+
+  const redirect = ()=>{
+    const authToken = localStorage.getItem('token')
+ 
+      if(authToken.length > 0){
+        history.push("/profile")}
+  }; 
+  
 
   return (
     <div>

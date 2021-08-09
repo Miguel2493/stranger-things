@@ -23,11 +23,12 @@ const Register = () => {
       body: JSON.stringify({ user: userLogin }),
     })
       .then((res) => {
-        console.log("We are in?", res);
         return res.json();
-      })
-      .then(console.log);
-  };
+      }).then((result)=>{
+          console.log(result.data.token);
+            window.localStorage.setItem('token',result.data.token)
+        })
+    };
   
     const updateUsername = (event) => setUserName(event.target.value);
     const updatePassword = (event) => setPassword(event.target.value);
@@ -48,10 +49,6 @@ const Register = () => {
           </form>        
     </div>    
       );
-};
-  
-    
-    
-  
-   
+}; 
+     
 export default Register;

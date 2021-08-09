@@ -1,5 +1,6 @@
-import React,{ useState }  from "react";
+import React,{ useEffect, useState }  from "react";
 import { Link }  from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 
@@ -39,6 +40,12 @@ const Login = () => {
 
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
+
+  const redirect = ()=>{
+    history.push("/src/Components/Home.jsx")
+  };
+  
 
   const onFormSubmit = (event)=>{
     event.preventDefault();
@@ -47,6 +54,13 @@ const Login = () => {
     password: password,
   };
 
+  function LoginCompleted(){
+    let history = useHistory();
+    function handleClick(){
+      history.push("/Home")
+    }
+  }
+
   const loginVerification = loginUrl + "/users/login";
   fetch(loginVerification, {
     method: "POST",
@@ -54,9 +68,11 @@ const Login = () => {
       'Content-Type' : 'application/json'
     },
     body: JSON.stringify({user:userLogin}),
-  }).then(response => response.json())
-  .then(result => {
-    console.log(result);
+  }).then((response) => {
+    return response.json();
+  }).then((result) => {
+    console.log(result.data.token);
+    window.localStorage.setItem('token',result.data.token)
   })
   .catch(console.error)
   };
@@ -76,7 +92,7 @@ const Login = () => {
         Password:
           <input type="text" value={password} onChange={updatePassword} />
         </label>
-        <button type="submit">Submit Form</button>
+        <button onClick={redirect} type="submit">Enter</button>
       </form>
 
       <Link to="/register">Register</Link>

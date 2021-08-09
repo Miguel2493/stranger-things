@@ -16,18 +16,36 @@ const CreatePost = () => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [location, setLocation] = useState('');
-    // const [willDeliver, setWillDeliver] = useState(false);
+    const [willDeliver, setWillDeliver] = useState(true);
 
     const onFormSubmit = (event) =>{
         event.preventDefault();
         const finalPost = {
-            title: 'Civc',
-            description: 'Fair',
-            price: '$1,000',
-            location:'Chicago',
-            // willDeliver: false
-        }
-        console.log(finalPost);
+            title: title,
+            description: description,
+            price: price,
+            location:location,
+            willDeliver: true
+        };
+
+
+const postEndPoint = loginUrl + "/posts";
+
+const authToken =  window.localStorage.getItem('token')
+console.log(authToken);
+
+fetch(postEndPoint, 
+    {
+    method: "POST",
+    headers:{
+        "Content-Type": 'application/json',
+        'Authorization': `Bearer ${authToken}` 
+    },
+    body: JSON.stringify({post:finalPost}),
+}).then(res => res.json())
+.then(result =>{
+    console.log(result);
+}).catch(console.error)
 };
 
 const updateTitle = (event) =>{setTitle(event.target.value);}
@@ -35,31 +53,8 @@ const updateTitle = (event) =>{setTitle(event.target.value);}
 const updateDescription = (event) =>{setDescription(event.target.value)};
 const updatePrice = (event) =>{setPrice(event.target.value)};
 const updateLocation = (event) =>{ setLocation(event.target.value)};
-// const updateWillDeliver = (event) =>{ setWillDeliver(event.target.value)};
+const updateWillDeliver = (event) =>{ setWillDeliver(event.target.value)};
 
-const postEndPoint = loginUrl + "/posts";
-const authToken = window.localStorage.getItem('token')
-
-fetch(postEndPoint, 
-    {
-    method: "POST",
-    headers:{
-        "Content-Type": 'application/json',
-         'Authorization': 'Bearer '  
-    },
-    body: JSON.stringify(
-        {
-            post:{
-                title: 'Toyota Camry',
-                description: 'Good',
-                price:'$1,000',
-                location:'Chicago',
-            }
-        })
-}).then(res => res.json())
-.then(result =>{
-    console.log(result);
-}).catch(console.error)
 
 
 return (
@@ -76,12 +71,12 @@ return (
                 <input type="text" value={price} onChange={updatePrice}/>
                 Location:
                 <input type="text" value={location} onChange={updateLocation}/>
-                {/* Will Deliver?
-                <input type="checkbox" value={willDeliver} onChange={updateWillDeliver}/> */}
+                Will Deliver?
+                <input type="checkbox" value={willDeliver} onChange={updateWillDeliver}/>
                 <button type="submit">Create Post</button>
             </form>
         </div>
-    );
+)
 };
 
 export default CreatePost;

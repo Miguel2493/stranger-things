@@ -1,15 +1,15 @@
-import React from "react";
+// import React from "react";
 
-const SinglePost = ({post}) =>{
-return(
-    <div>
-        <h2>{post.title}</h2>
-        <h3>{post.author}</h3>
-        <p>{post.body}</p>
-    </div>
+// const SinglePost = (data) =>{
+// return(
+//     <div >
+//         <h2>{data.posts.location}</h2>
+//         <h3>{data.posts.author}</h3>
+//         <p>{data.posts.body}</p>
+//     </div>
 
-);
+// );
 
-};
+// };
 
-export default SinglePost;
+// export default SinglePost;

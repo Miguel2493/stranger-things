@@ -1,5 +1,6 @@
-import React,{ useState }  from "react";
+import React,{ useEffect, useState }  from "react";
 import { Link }  from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 
@@ -39,10 +40,12 @@ const Login = () => {
 
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
+
 
   const onFormSubmit = (event)=>{
     event.preventDefault();
-  const userLogin={
+  const userLogin = {
     username: username,
     password: password,
   };
@@ -54,9 +57,12 @@ const Login = () => {
       'Content-Type' : 'application/json'
     },
     body: JSON.stringify({user:userLogin}),
-  }).then(response => response.json())
-  .then(result => {
-    console.log(result);
+  }).then((response) => {
+    return response.json();
+  }).then((result) => {
+    console.log(result.data.token);
+   window.localStorage.setItem('token',result.data.token)
+   history.push("/profile")
   })
   .catch(console.error)
   };
@@ -64,29 +70,37 @@ const Login = () => {
   const updateUsername = (event) => setUserName(event.target.value);
   const updatePassword = (event) => setPassword(event.target.value);
 
+  // const LogIn = ()=>{
+  //   const authToken = localStorage.getItem('token')
+ 
+  //     if(authToken){
+  //       }
+  // }; 
+  
+
   return (
-    <div>
-      <p>LOGIN</p>
+    <div className="loginpage">
+      <p className="logword">LOGIN</p>
       <form onSubmit={onFormSubmit}>
-        <label>
+        <label className="username">
           Username:
           <input type="text" value={username} onChange={updateUsername} />
         </label>
-        <label>
+        <label className="password">
         Password:
           <input type="text" value={password} onChange={updatePassword} />
         </label>
-        <button type="submit">Submit Form</button>
+        <button type="submit">Enter</button>
       </form>
 
-      <Link to="/register">Register</Link>
+      <Link to="/register">Don't have an account? Register Here!</Link>
     
 </div>
 
-  )
+  );
 
 };
 
-export default Login
+export default Login;
 // User should be able to register
 

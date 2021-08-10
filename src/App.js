@@ -27,21 +27,19 @@ import { Nav, Home, Login, Posts, Register, Profile } from "./Components";
 function App() {
   console.log("App");
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <Nav />
         <Switch>
-          {/* <Login /> */}
+          <Route exact path="/login" component={Login} />;
           <Route path="/home" component={Home} />
           <Route path="/posts" component={Posts} />
-          {/* <Route path="/messages" component={Messages} /> */}
-          {/* <Route path="/createposts" component={CreatePosts} /> */}
           <Route path="/profile" component={Profile} />
           <Route path="/register" component={Register} />
-          <Route exact path="/" component={Login} />;
+          <Route path="/" component={Home} />
         </Switch>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 

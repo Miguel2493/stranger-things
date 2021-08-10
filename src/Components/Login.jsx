@@ -79,25 +79,25 @@ const Login = () => {
   
 
   return (
-    <div>
-      <p>LOGIN</p>
+    <div className="loginpage">
+      <p className="logword">LOGIN</p>
       <form onSubmit={onFormSubmit}>
-        <label>
+        <label className="username">
           Username:
           <input type="text" value={username} onChange={updateUsername} />
         </label>
-        <label>
+        <label className="password">
         Password:
           <input type="text" value={password} onChange={updatePassword} />
         </label>
         <button type="submit">Enter</button>
       </form>
 
-      <Link to="/register">Register</Link>
+      <Link to="/register">Don't have an account? Register Here!</Link>
     
 </div>
 
-  )
+  );
 
 };
 

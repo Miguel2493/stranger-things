@@ -10,6 +10,7 @@ import Posts from "./Components/Posts";
 import Profile from "./Components/Profile";
 import Register from "./Components/Register";
 
+
 function App() {
   console.log("App");
   return (

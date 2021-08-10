@@ -1,11 +1,14 @@
 
 import React,{ useState }  from "react";
+import { useHistory } from "react-router-dom";
 
 const loginUrl = "https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-PT"
 
 const Register = () => {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const history = useHistory();
+
   
     const onFormSubmit = (event)=>{
       event.preventDefault();
@@ -25,9 +28,12 @@ const Register = () => {
       .then((res) => {
         return res.json();
       }).then((result)=>{
+          console.log(result)
           console.log(result.data.token);
             window.localStorage.setItem('token',result.data.token)
+            history.push("/profile")
         })
+        .catch(console.error)
     };
   
     const updateUsername = (event) => setUserName(event.target.value);

@@ -45,7 +45,7 @@ const Login = () => {
 
   const onFormSubmit = (event)=>{
     event.preventDefault();
-  const userLogin={
+  const userLogin = {
     username: username,
     password: password,
   };
@@ -101,6 +101,6 @@ const Login = () => {
 
 };
 
-export default Login
+export default Login;
 // User should be able to register
 

@@ -5,6 +5,7 @@ import Login from "./Login";
 import Posts from "./Posts";
 import Profile from "./Profile";
 import Register from "./Register";
+import CreatePosts from "./CreatePosts";
 // import SinglePost from "./SinglePost"
 
-export { Nav, Home, Login, Posts, Register, Profile };
+export { Nav, Home, Login, Posts, Register, Profile, CreatePosts };

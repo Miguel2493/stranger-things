@@ -2,15 +2,6 @@ import React,{useState} from "react";
 
 const loginUrl = "https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-PT";
 
-
-// const exampleCode ={
-//     title: 'Civc',
-//     description: 'Fair',
-//     price: '$1,000',
-//     location:'Chicago',
-//     willDeliver: '',
-// }
-
 const CreatePost = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -59,21 +50,29 @@ const updateWillDeliver = (event) =>{ setWillDeliver(event.target.value)};
 
 return (
         <div>
-            <p>Create new Post? Please fill:</p>
-            <form onSubmit={onFormSubmit}>
+            <p className="newpost">Create new Post? Please fill:</p>
+            <form className="createPosts" onSubmit={onFormSubmit}>
                 <label>
                 Title:
                 <input type="text" value={title} onChange={updateTitle}/>
                 </label>
+                <label>
                 Description:
                 <input type="text" value={description} onChange={updateDescription}/>
+                </label>
+                <label>
                 Price:
                 <input type="text" value={price} onChange={updatePrice}/>
+                </label>
+                <label>
                 Location:
                 <input type="text" value={location} onChange={updateLocation}/>
+                </label>
+                <label> 
                 Will Deliver?
                 <input type="checkbox" value={willDeliver} onChange={updateWillDeliver}/>
                 <button type="submit">Create Post</button>
+                </label>
             </form>
         </div>
 )

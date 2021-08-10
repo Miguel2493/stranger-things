@@ -89,3 +89,20 @@
   border-radius: 3px;
   padding-left: 8px;
 }
+
+.createPosts {
+  display: flex;
+  align-items: flex-end;
+  justify-items: stretch;
+  align-content: space-around;
+  justify-content: space-evenly;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: xx-large;
+}
+
+.newpost {
+  display: flex;
+  flex-direction: column;
+  font-size: xx-large;
+}

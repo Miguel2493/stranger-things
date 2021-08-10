@@ -1,26 +1,27 @@
 import React,{ useEffect, useState }  from "react";
-import SinglePost  from "./SinglePost"
+import { Link } from "react-router-dom";
 
-const dummyPosts = [
-    {title: "First Post", author: "Lion", body:"Like a rug!!"},
-    {title: "Second Post", author: "Sharky", body:"Looking for Lava Girl"}
-]
+const loginUrl = "https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-PT";
 
 const Post = ({author}) =>{
     const [posts, setPosts]= useState([]);
 
     useEffect(() =>{
+        const postURL = loginUrl + "/posts"
 
+        fetch(postURL)
+        .then((response)=> response.json())
+        .then((json)=>{
+            console.log(json);
+            const responseURL = json.message;
+
+            setPosts((oldState)=> [...oldState,responseURL]);
+        }).catch(console.error);
     },[]);
 
-    const postToRender = !author 
-    ? dummyPosts : dummyPosts.filter((item) => item.author === author);
-
-    return(
+    return (
         <div>
-            {postToRender.map((singlePost) =>(
-                <SinglePost key={singlePost.body } post={singlePost}/>
-            ))}
+            <Link to="/createposts">ADD POSTS</Link>
         </div>
     )        
     

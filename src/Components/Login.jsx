@@ -1,39 +1,9 @@
-import React,{ useEffect, useState }  from "react";
+import React,{ useState }  from "react";
 import { Link }  from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-
-
-
-// {//this is where we will create the login
-// // fetch(
-// //     "https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-PT/users/register",
-// //     {
-// //       method: "POST",
-// //       headers: {
-// //         "Content-Type": "application/json",
-// //       },
-// //       body: JSON.stringify({
-// //         user: {
-// //           username: "spongebob",
-// //           password: "KrabbyPatty",
-// //         },
-// //       }),
-// //     }
-// //   )
-// //     .then((response) => response.json())
-// //     .then((result) => {
-// //       console.log(result);
-// //     })
-// //     .catch(console.error);
-// }
-
 const loginUrl = "https://strangers-things.herokuapp.com/api/2104-UIC-RM-WEB-PT";
 
-// const exampleLogin = {
-//   username: "SpongeBob",
-//   password: "KrabbyPatty",
-// };
 
 
 const Login = () => {
@@ -68,15 +38,7 @@ const Login = () => {
   };
 
   const updateUsername = (event) => setUserName(event.target.value);
-  const updatePassword = (event) => setPassword(event.target.value);
-
-  // const LogIn = ()=>{
-  //   const authToken = localStorage.getItem('token')
- 
-  //     if(authToken){
-  //       }
-  // }; 
-  
+  const updatePassword = (event) => setPassword(event.target.value);  
 
   return (
     <div className="loginpage">
@@ -102,5 +64,4 @@ const Login = () => {
 };
 
 export default Login;
-// User should be able to register
 
